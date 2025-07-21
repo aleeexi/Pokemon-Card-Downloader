@@ -16,7 +16,9 @@ options.add_argument("--headless")
 
 driver = webdriver.Chrome(options = options)
 # Navigate webdriver to database of Uncommon Pokemon cards
-driver.get("https://pkmncards.com/?s=type%3Apokemon+rarity%3Auncommon&sort=abc&ord=auto&display=full")
+# Paste this link and replace [NUMBER] with the desired page number to start scraping from a specific page:
+# https://pkmncards.com/page/[NUMBER]/?s=type%3Apokemon+rarity%3Auncommon&sort=abc&ord=auto&display=full
+driver.get("https://pkmncards.com/page/44/?s=type%3Apokemon+rarity%3Auncommon&sort=abc&ord=auto&display=full")
 
 # Navigate page of Pokemon cards and download all card images with name-energy-id.jpg file name formatting
 def navigate_page():
