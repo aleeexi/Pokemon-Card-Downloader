@@ -15,8 +15,8 @@ options.headless = True # Set to True to enable headless mode (no window pop-up)
 options.add_argument("--headless")
 
 driver = webdriver.Chrome(options = options)
-# Navigate webdriver to database of Ultra Rare Pokemon cards
-driver.get("https://pkmncards.com/?s=type%3Apokemon+rarity%3Aultra-rare&sort=abc&ord=auto&display=full")
+# Navigate webdriver to database of Rare Pokemon cards
+driver.get("https://pkmncards.com/?s=type%3Apokemon+rarity%3Arare&sort=abc&ord=auto&display=full")
 
 # Navigate page of Pokemon cards and download all card images with name-energy-id.jpg file name formatting
 def navigate_page():
@@ -44,14 +44,14 @@ def navigate_page():
         # Image download code from https://plainenglish.io/blog/web-scraping-images-with-python-and-selenium-792e452abd70
         image = card.find_element(By.CSS_SELECTOR, "img.card-image")
         url = image.get_attribute("src")
-        urllib.request.urlretrieve(str(url), "images/ultra-rare/" + name + "-" + energy + "-" + id + ".jpg")
+        urllib.request.urlretrieve(str(url), "images/rare/" + name + "-" + energy + "-" + id + ".jpg")
     
     # Navigate to next page using right arrow key shortcut
     actions = ActionChains(driver)
     actions.send_keys(Keys.RIGHT)
     actions.perform()
 
-# Navigate all search result pages of Ultra Rare Pokemon cards
+# Navigate all search result pages of Rare Pokemon cards
 while True:
     navigate_page()
     WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, "div.after-content")))
