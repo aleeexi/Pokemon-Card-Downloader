@@ -28,8 +28,12 @@ def navigate_page():
 
     for card in cards:
         # Get name of Pokemon in card
-        name_element = card.find_element(By.CSS_SELECTOR, "span.pokemon")
-        name = name_element.text
+        try:
+            name_element = card.find_element(By.CSS_SELECTOR, "span.pokemon")
+        except:
+            name_element = card.find_element(By.CSS_SELECTOR, "span.name")
+        finally:
+            name = name_element.text
 
         # Get energy type of Pokemon in card
         energy_element = card.find_element(By.CSS_SELECTOR, "abbr.ptcg-font.ptcg-symbol-name")
